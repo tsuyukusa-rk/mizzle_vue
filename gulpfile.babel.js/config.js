@@ -19,7 +19,8 @@ module.exports = {
       './assets/**/*.{ico,eot,ttf,wotf}',
       './assets/**/*.do',
       './assets/**/*.json',
-      '!./assets/html/**/*.json'
+      '!./assets/html/**/*.json',
+      './assets/**/*.{mp4,mp3}'
     ]
   },
   ejs: [
