@@ -1,0 +1,87 @@
+---
+# 環境設定
+env:
+  browser: true
+  commonjs: true
+  es6    : true
+
+#vueの仕様に設定
+extends: 'vue'
+
+# plugins:
+
+# 追加の言語機能を使用するかどうか
+parserOptions:
+  ecmaVersion: 6
+  sourceType: 'module'
+  ecmaFeatures: 
+    jsx: true
+
+# global変数の設定
+# globals:
+
+# eslint rules -> 0: disable, 1: warn, 2: error
+rules:
+  # Possible Errors
+  no-cond-assign: 2 # 条件式で'='を禁止
+  no-console: 1 # consoleを警告
+  no-empty: 2 # 空のブロックスコープを禁止
+  no-extra-boolean-cast: 2 # 条件式、Booleanの引数で!!を禁止
+  no-extra-parens: 1 # 不必要な括弧を警告
+  no-extra-semi: 2 # 不要なセミコロンを禁止
+  no-func-assign: 2 # functionへの再代入を禁止
+  no-unreachable: 2 # returnやbreakの後のステートメントを禁止
+  # Best Practices
+  block-scoped-var: 2 # ブロックスコープ内で定義された変数をブロックスコープ外で利用するのを禁止
+  default-case: 2 # switch文でdefaultを必ず付ける
+  eqeqeq: 2 # ==, !=の使用を禁止
+  no-alert: 1 # alertを警告
+  no-empty-function: 2 # 空のfunctionを禁止
+  no-eq-null: 2 # nullで比較するときは===,!==を利用する
+  no-eval: 2 # evalは禁止
+  no-extra-label: 2 # 不要なラベルを禁止
+  no-implicit-globals: 2 # 暗黙のグローバル禁止
+  no-implied-eval: 2 # 文字列を関数にできる処理を禁止
+  no-lone-blocks: 2 # 不要なブロックスコープを禁止
+  no-multi-spaces: # 不要なスペース文字を禁止
+    - 2
+    - exceptions:
+        Property: true
+        VariableDeclarator : true
+        ImportDeclaration: true
+  no-new-func: 2 # Functionの利用を禁止
+  no-new: 1 # newで宣言する場合に戻り値がないものを警告
+  no-proto: 2 # __proto__の使用を禁止
+  no-redeclare: 2 # 同一変数名の再宣言を禁止
+  # Variables
+  init-declarations:
+    - 2
+    - 'always' # let, constはデフォルト値が必要
+  no-shadow-restricted-names: 2 # undefinedやNaNなどのグローバルの値の再定義を禁止
+  no-undef-init: 2 # 変数のデフォルト値にundefinedを利用するのを禁止
+  no-undef: 1 # 定義されていない変数の利用を禁止
+  no-undefined: 2 # undefinedの利用を禁止
+  no-unused-vars: 2 # 利用されていない変数がある場合エラー
+  no-use-before-define: # 前に定義されていない変数の利用を禁止(ただし関数宣言は許可)
+    - 1
+    - 'nofunc'
+  new-cap: # newを使用する場合は先頭は大文字
+    - 2
+    - properties: false # propertyを使った場合は許可
+  new-parens: 2 # newするときは括弧必須
+  no-mixed-spaces-and-tabs: 2 # タブ文字とスペース文字の混在を禁止
+  no-multiple-empty-lines: 2 # 複数行に渡る空行を禁止
+  no-new-object: 2 # Objectのnewを禁止({}リテラルを使う)
+  no-spaced-func: 2 # 関数呼び出し時の括弧の前にスペースを入れない
+  no-ternary: 0 # 三項演算子は使用可
+  no-trailing-spaces: 2 # 末尾のスペースを禁止
+  no-underscore-dangle: 0 # 変数に_を付けるのを許可
+  quotes: # シングルクォートを利用
+    - 2
+    - 'single'
+  semi: # セミコロンを必ず付ける
+    - 2
+    - 'always'
+  # ECMAScript 6 
+  no-class-assign: 2 # クラスとして定義した変数に再代入を禁止
+  no-const-assign: 2 # constの再代入を禁止
