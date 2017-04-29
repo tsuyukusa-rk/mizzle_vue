@@ -1,8 +1,5 @@
 <template lang="pug">
   header.header()
-    div.logo()
-    div() お知らせ
-      a( href="#" )
 </template>
 
 <script>

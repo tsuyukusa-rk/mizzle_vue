@@ -16,12 +16,6 @@ const api = {
       });
   },
   post: (setting)=> {
-    const param = setting.param || {
-      id: new Date().getTime(),
-      type: "is-left",
-      icon: "https://placehold.jp/150x150.png",
-      text: "サンプルサンプルサンプルサンプルサンプルサンプル"
-    };
     return axios.post('/api/talkList', param)
       .then(function (res) {
         setting.then(res);

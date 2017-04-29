@@ -2,24 +2,19 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../utils/api';
 import  {
-  INCREMENT,
-  TALKLIST
+  INCREMENT
 } from './mutationTypes'
 Vue.use(Vuex);
 
 // 初期の状態データ
 const state = {
-  [INCREMENT]: 0,
-  [TALKLIST]: []
+  [INCREMENT]: 0
 };
 // storeの状態を返却する。
 // なんらかの処理を加え加工することも可能
 const getters = {
   doneTodos(state) {
     return state.todos.filter(todo => todo.done);
-  },
-  talklist(state) {
-    return state[TALKLIST];
   }
 };
 // ミューテーションと似ているが
@@ -29,20 +24,6 @@ const getters = {
 const actions = {
   [INCREMENT](context) {
     context.commit(INCREMENT);
-  },
-  [TALKLIST]({commit}, products) {
-    new Promise((resolve, reject)=> {
-      api.post({
-        param: products,
-        then: (res)=> { resolve(res); },
-        catch: (err)=> { reject(err); }
-      });
-    }).then((fetchPostArg)=> {
-      api.get({
-        then: (res)=> { commit(TALKLIST, res.data); },
-        catch: (err)=> {}
-      });
-    });
   }
 };
 // state更新のための処理
@@ -50,10 +31,6 @@ const mutations = {
   [INCREMENT](state) {
     state.count++;
     console.log(state);
-  },
-  [TALKLIST](state, data) {
-    state[TALKLIST] = data;
-    console.log('success:talkList  ' + data);
   }
 };
 // 拡張機能の追加
