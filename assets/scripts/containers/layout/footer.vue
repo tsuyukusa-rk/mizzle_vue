@@ -1,5 +1,6 @@
 <template lang="pug">
   footer.footer()
+    p(): small() Copyright&copy; mizzle All Right Reserved
 </template>
 
 <script>
@@ -9,4 +10,10 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+  .footer
+    position absolute
+    bottom 5%
+    right 5%
+    color #fff
+</style>
