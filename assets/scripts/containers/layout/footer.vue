@@ -13,7 +13,7 @@ export default {
 <style lang="stylus" scoped>
   .footer
     position absolute
-    bottom 5%
+    bottom 3%
     right 5%
     color #fff
 </style>

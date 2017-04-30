@@ -17,6 +17,22 @@ const routes = [
   {
     path: '/biography/',
     component: biographyView
+  },
+  {
+    path: '/discography/',
+    component: biographyView
+  },
+  {
+    path: '/schedule/',
+    component: biographyView
+  },
+  {
+    path: '/songs/',
+    component: biographyView
+  },
+  {
+    path: '/contact/',
+    component: biographyView
   }
 ];
 
