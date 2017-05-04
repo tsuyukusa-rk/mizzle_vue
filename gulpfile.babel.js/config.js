@@ -20,7 +20,8 @@ module.exports = {
       './assets/**/*.do',
       './assets/**/*.json',
       '!./assets/html/**/*.json',
-      './assets/**/*.{mp4,mp3}'
+      './assets/**/*.{mp4,mp3}',
+      './assets/js/**/*.js'
     ]
   },
   ejs: [
@@ -43,7 +44,7 @@ module.exports = {
     output: {
       filename: '[name].js'
     },
-    src: './assets/**/*.{vue,js}'
+    src: './assets/scripts/**/*.{vue,js}'
   },
   eslint: {
     src: ['./assets/**/*.vue']

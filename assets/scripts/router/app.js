@@ -4,6 +4,10 @@ Vue.use(VueRouter);
 
 import topView from '../containers/pages/top';
 import biographyView from '../containers/pages/biography';
+import dicographyView from '../containers/pages/discography';
+import scheduleView from '../containers/pages/schedule';
+import songsView from '../containers/pages/songs';
+import contactView from '../containers/pages/contact';
 
 // 繊維管理のモード
 // const mode = 'history';
@@ -20,19 +24,19 @@ const routes = [
   },
   {
     path: '/discography/',
-    component: biographyView
+    component: dicographyView
   },
   {
     path: '/schedule/',
-    component: biographyView
+    component: scheduleView
   },
   {
     path: '/songs/',
-    component: biographyView
+    component: songsView
   },
   {
     path: '/contact/',
-    component: biographyView
+    component: contactView
   }
 ];
 

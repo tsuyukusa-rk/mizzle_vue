@@ -2,19 +2,26 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../utils/api';
 import  {
-  INCREMENT
+  INCREMENT,
+  SCHEDULE
 } from './mutationTypes'
 Vue.use(Vuex);
 
+import schedule from '../data/schedule'
+
 // 初期の状態データ
 const state = {
-  [INCREMENT]: 0
+  [INCREMENT]: 0,
+  [SCHEDULE]: schedule
 };
 // storeの状態を返却する。
 // なんらかの処理を加え加工することも可能
 const getters = {
   doneTodos(state) {
     return state.todos.filter(todo => todo.done);
+  },
+  schedule(state) {
+    return state[SCHEDULE];
   }
 };
 // ミューテーションと似ているが

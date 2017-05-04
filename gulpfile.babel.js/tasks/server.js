@@ -14,7 +14,7 @@ gulp.task('server', ['apiServer'], ()=> {
       livereload: true,
       open: true,
       // path: '_index/index.html',
-      fallback: '_index/index.html',
+      fallback: '/index.html',
       proxies: [
         {
           source: '/api',

@@ -93,7 +93,8 @@
     "vue-template-compiler": "^2.1.10",
     "vuex": "^2.1.2",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.3.0",
+    "xsound": "^1.13.2"
   },
   "babel": {
     "presets": [

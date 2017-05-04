@@ -6,8 +6,10 @@
           router-link.hvr-shadow-radial( to="/" ) top
         li()
           router-link.hvr-shadow-radial( to="/biography/" ) biography
+        //- li()
+        //-   router-link.hvr-shadow-radial( to="/discography/" ) discography
         li()
-          router-link.hvr-shadow-radial( to="/discography/" ) discography
+          span() discography（準備中）
         li()
           router-link.hvr-shadow-radial( to="/schedule/" ) schedule
         li()
@@ -43,6 +45,12 @@
     & > li
       border-left 1px solid #fff
       width calc(100% / 6)
+      & > span
+        display block
+        text-align center
+        padding 10px
+        color #fff
+        cursor default
       & > a
         display block
         text-align center
