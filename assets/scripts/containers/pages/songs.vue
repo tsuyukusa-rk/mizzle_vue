@@ -115,7 +115,7 @@
       pause (data) {
         data('audio').stop();
       },
-      stop (data) {
+      stop (data, key) {
         data('audio').stop();
         this[key + 'Time'] = this.formatTime(0);
         data('audio').currentTime = 0;
@@ -134,7 +134,7 @@
       },
       formatTime (time) {
         time = Math.floor(time);
-        const sec = (String(Math.floor(time % 60)).length === 1) ? '0' + Math.floor(time % 60) : Math.floor(time % 60); 
+        const sec = (String(Math.floor(time % 60)).length === 1) ? '0' + Math.floor(time % 60) : Math.floor(time % 60);
         time = Math.floor(time / 60) + '：' + sec;
         return time;
       }
