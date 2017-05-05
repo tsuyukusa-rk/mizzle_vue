@@ -59,7 +59,7 @@
       &:nth-child(even)
         background-color rgba(170, 170, 170, 0.15)
   .scheduleTittle
-    font-size 13px
+    font-size 12px
     font-weight bold
     margin-bottom 5px
     > a

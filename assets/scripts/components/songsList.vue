@@ -2,7 +2,7 @@
   ul.songs()
     li( v-show="isAmaoto" )
       h3.title() 雨音
-      p() {{ amaotoTime }}
+        span.time() {{ amaotoTime }}
       ul.ctrlList()
         li.playIcon( v-on:click="play(amaoto.obj)" )
         li.pauseIcon( v-on:click="pause(amaoto.obj)" )
@@ -14,7 +14,7 @@
           img( src="/images/audioNextIcon.png" alt="早送り" )
     li( v-show="isMovieStar" )
       h3.title() Movie Star
-      p() {{ movieStarTime }}
+        span.time() {{ movieStarTime }}
       ul.ctrlList()
         li.playIcon( v-on:click="play(movieStar.obj)" )
         li.pauseIcon( v-on:click="pause(movieStar.obj)" )
@@ -58,7 +58,7 @@
           ready: () => { that.isAmaoto = true; },
           update: (source, currentTime) => { that.update(source, currentTime, that.AMAOTO_TIME); }
         });
-        val.obj('audio').ready.call(val.obj('audio'), val.buf);
+        val.obj('audio').ready(val.buf);
       },
       movieStar (val) {
         const that = this;
@@ -66,7 +66,7 @@
           ready: () => { that.isMovieStar = true; },
           update: (source, currentTime) => { that.update(source, currentTime, that.MOVIE_STAR_TIME); }
         });
-        val.obj('audio').ready.call(val.obj('audio'), val.buf);
+        val.obj('audio').ready(val.buf);
       }
     },
     methods: {
@@ -119,12 +119,28 @@
 </script>
 
 <style lang="stylus" scoped>
+  .songs
+    height 100%
+    overflow scroll
+    > li
+      padding 15px
+      &:nth-child(odd)
+        background-color rgba(255, 255, 255, 0.15)
+      &:nth-child(even)
+        background-color rgba(170, 170, 170, 0.15)
+  .title
+    font-size 12px
+    font-weight bold
+    margin-bottom 5px
+    & .time
+      font-weight normal
+      padding-left 10px
   .ctrlList
     display flex
     align-items center
     & > li
-      margin-left 10px
-      cursor default
+      margin-left 15px
+      cursor pointer
       &:first-child
         margin-left 0
   .playIcon
