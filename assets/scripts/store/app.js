@@ -2,8 +2,11 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../utils/api';
 import  {
-  INCREMENT,
-  SCHEDULE
+  SCHEDULE,
+  AMAOTO,
+  AMAOTO_TIME,
+  MOVIE_STAR,
+  MOVIE_STAR_TIME
 } from './mutationTypes'
 Vue.use(Vuex);
 
@@ -11,17 +14,29 @@ import schedule from '../data/schedule'
 
 // 初期の状態データ
 const state = {
-  [INCREMENT]: 0,
-  [SCHEDULE]: schedule
+  [SCHEDULE]: schedule,
+  [AMAOTO]: null,
+  [AMAOTO_TIME]: '0：00',
+  [MOVIE_STAR]: null,
+  [MOVIE_STAR_TIME]: '0：00'
 };
 // storeの状態を返却する。
 // なんらかの処理を加え加工することも可能
 const getters = {
-  doneTodos(state) {
-    return state.todos.filter(todo => todo.done);
-  },
   schedule(state) {
     return state[SCHEDULE];
+  },
+  amaoto(state) {
+    return state[AMAOTO];
+  },
+  amaotoTime(state) {
+    return state[AMAOTO_TIME];
+  },
+  movieStar(state) {
+    return state[MOVIE_STAR];
+  },
+  movieStarTime(state) {
+    return state[MOVIE_STAR_TIME];
   }
 };
 // ミューテーションと似ているが
@@ -29,15 +44,90 @@ const getters = {
 // アクションは任意の非同期処理を含むことができる。
 // store.dispatch('increment');で呼び出す。
 const actions = {
-  [INCREMENT](context) {
-    context.commit(INCREMENT);
+  [AMAOTO_TIME]({ commit, state }, products) {
+    const formatTime = (time) => {
+      time = Math.floor(time);
+      const sec = (String(Math.floor(time % 60)).length === 1) ? '0' + Math.floor(time % 60) : Math.floor(time % 60);
+      time = Math.floor(time / 60) + '：' + sec;
+      return time;
+    };
+    commit(AMAOTO_TIME, formatTime(products));
+  },
+  [MOVIE_STAR_TIME]({ commit, state }, products) {
+    const formatTime = (time) => {
+      time = Math.floor(time);
+      const sec = (String(Math.floor(time % 60)).length === 1) ? '0' + Math.floor(time % 60) : Math.floor(time % 60);
+      time = Math.floor(time / 60) + '：' + sec;
+      return time;
+    };
+    commit(MOVIE_STAR_TIME, formatTime(products));
+  },
+  [AMAOTO]({ commit, state }, products) {
+    const song = X.clone();
+    const promise = new Promise((resolve, reject) => {
+      X.ajax({
+        url: '/audio/mp3/amaoto.mp3',
+        timeout: 60000,
+        success: (event, arrayBuffer) => {
+          // 第1引数は, XMLHttpRequestProgressEventインスタンス
+          // 第2引数は, ArrayBuffer
+          // ArrayBuffer -> AudioBuffer -> AudioBufferSourceNode
+          resolve({
+            obj: song,
+            buf: arrayBuffer
+          });
+        },
+        error: (event, textStatus) => {
+          // 第1引数は, XMLHttpRequestProgressEvent
+          // 第2引数は, 文字列 'error', 'timeout' のどちらか
+        },
+        progress: (event) => {
+          // 第1引数は, XMLHttpRequestProgressEventインスタンス
+        }
+      });
+    });
+    promise.then((data) => { commit(AMAOTO, data); });
+  },
+  [MOVIE_STAR]({ commit, state }, products) {
+    const song = X.clone();
+    const promise = new Promise((resolve, reject) => {
+      X.ajax({
+        url: '/audio/mp3/movie_star.mp3',
+        timeout: 60000,
+        success: (event, arrayBuffer) => {
+          // 第1引数は, XMLHttpRequestProgressEventインスタンス
+          // 第2引数は, ArrayBuffer
+          // ArrayBuffer -> AudioBuffer -> AudioBufferSourceNode
+          resolve({
+            obj: song,
+            buf: arrayBuffer
+          });
+        },
+        error: (event, textStatus) => {
+          // 第1引数は, XMLHttpRequestProgressEvent
+          // 第2引数は, 文字列 'error', 'timeout' のどちらか
+        },
+        progress: (event) => {
+          // 第1引数は, XMLHttpRequestProgressEventインスタンス
+        }
+      });
+    });
+    promise.then((data) => { commit(MOVIE_STAR, data); });
   }
 };
 // state更新のための処理
 const mutations = {
-  [INCREMENT](state) {
-    state.count++;
-    console.log(state);
+  [AMAOTO_TIME](state, payload) {
+    state[AMAOTO_TIME] = payload;
+  },
+  [AMAOTO](state, payload) {
+    state[AMAOTO] = payload;
+  },
+  [MOVIE_STAR_TIME](state, payload) {
+    state[MOVIE_STAR_TIME] = payload;
+  },
+  [MOVIE_STAR](state, payload) {
+    state[MOVIE_STAR] = payload;
   }
 };
 // 拡張機能の追加
